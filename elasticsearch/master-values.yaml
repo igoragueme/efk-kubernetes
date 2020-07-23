@@ -1,9 +1,33 @@
 # master.yaml
 ---
-clusterName: "elasticsearch"
+clusterName: "elasticsearch-dev"
 nodeGroup: "master"
 roles:
   master: "true"
   ingest: "false"
   data: "false"
 replicas: 3
+
+podSecurityPolicy:
+  create: false
+  name: ""
+  spec:
+    privileged: true
+    fsGroup:
+      rule: RunAsAny
+    runAsUser:
+      rule: RunAsAny
+    seLinux:
+      rule: RunAsAny
+    supplementalGroups:
+      rule: RunAsAny
+    volumes:
+      - secret
+      - configMap
+
+persistence:
+  enabled: false
+  labels:
+    # Add default labels for the volumeClaimTemplate fo the StatefulSet
+    enabled: false
+  annotations: {}

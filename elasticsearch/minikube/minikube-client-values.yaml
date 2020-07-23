@@ -1,5 +1,5 @@
 ---
-clusterName: "elasticsearch-dev"
+clusterName: "elasticsearch"
 nodeGroup: "client"
 roles:
   master: "false"
@@ -8,6 +8,22 @@ roles:
 replicas: 2
 service:
   type: "LoadBalancer"
+
+# Permit co-located instances for solitary minikube virtual machines.
+antiAffinity: "soft"
+
+# Shrink default JVM heap.
+esJavaOpts: "-Xmx128m -Xms128m"
+
+# Allocate smaller chunks of memory per pod.
+resources:
+  requests:
+    cpu: "50m"
+    memory: "256M"
+  limits:
+    cpu: "500m"
+    memory: "256M"
+
 
 podSecurityPolicy:
   create: false

@@ -1,13 +1,27 @@
+# master.yaml
 ---
-clusterName: "elasticsearch-dev"
-nodeGroup: "client"
+clusterName: "elasticsearch"
+nodeGroup: "master"
 roles:
-  master: "false"
+  master: "true"
   ingest: "false"
   data: "false"
-replicas: 2
-service:
-  type: "LoadBalancer"
+replicas: 3
+
+# Permit co-located instances for solitary minikube virtual machines.
+antiAffinity: "soft"
+
+# Shrink default JVM heap.
+esJavaOpts: "-Xmx128m -Xms128m"
+
+# Allocate smaller chunks of memory per pod.
+resources:
+  requests:
+    cpu: "50m"
+    memory: "256M"
+  limits:
+    cpu: "500m"
+    memory: "256M"
 
 podSecurityPolicy:
   create: false
@@ -32,4 +46,3 @@ persistence:
     # Add default labels for the volumeClaimTemplate fo the StatefulSet
     enabled: false
   annotations: {}
-

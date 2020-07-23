@@ -1,5 +1,5 @@
 ---
-clusterName: "elasticsearch"
+clusterName: "elasticsearch-dev"
 nodeGroup: "data"
 roles:
   master: "false"
