@@ -5,7 +5,7 @@ roles:
   master: "false"
   ingest: "false"
   data: "false"
-replicas: 2
+replicas: 1
 service:
   type: "LoadBalancer"
 
@@ -23,24 +23,6 @@ resources:
   limits:
     cpu: "500m"
     memory: "256M"
-
-
-podSecurityPolicy:
-  create: false
-  name: ""
-  spec:
-    privileged: true
-    fsGroup:
-      rule: RunAsAny
-    runAsUser:
-      rule: RunAsAny
-    seLinux:
-      rule: RunAsAny
-    supplementalGroups:
-      rule: RunAsAny
-    volumes:
-      - secret
-      - configMap
 
 persistence:
   enabled: false
