@@ -1,0 +1,5 @@
+helm install -f minikube-master-values.yaml elasticsearch-master elastic/elasticsearch
+helm install -f minikube-client-values.yaml elasticsearch-client elastic/elasticsearch
+helm install -f minikube-data-values.yaml elasticsearch-data elastic/elasticsearch
+kubectl create -f fluentd-deamonset.yaml
+helm install -f kibana-values.yaml kibana elastic/kibana
