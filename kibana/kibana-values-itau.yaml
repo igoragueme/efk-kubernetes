@@ -1,4 +1,5 @@
 ---
+
 elasticsearchHosts: "http://elasticsearch-client:9200"
 
 replicas: 1
