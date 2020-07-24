@@ -10,4 +10,4 @@ spec:
     apiVersion: extensions/v1beta1
     kind: Deployment
     name: elasticsearch-client
-targetCPUUtilizationPercentage: 40
+  targetCPUUtilizationPercentage: 40
