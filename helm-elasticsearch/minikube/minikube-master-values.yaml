@@ -23,6 +23,9 @@ resources:
     cpu: "500m"
     memory: "256M"
 
+image: elasticsearch
+imageTag: 7.8.0
+
 persistence:
   enabled: false
   labels:

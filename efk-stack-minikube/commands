@@ -1,0 +1,7 @@
+kubectl apply -f observability-namespace.yaml
+kubectl apply -f fluentd.yaml
+kubectl apply -f elasticsearch-master.yaml
+kubectl apply -f elasticsearch-data.yaml
+kubectl apply -f elasticsearch-client.yaml
+kubectl apply -f hpa-client.yaml
+kubectl apply -f kibana.yaml

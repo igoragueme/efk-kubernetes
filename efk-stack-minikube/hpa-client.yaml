@@ -2,12 +2,12 @@ apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: elasticsearch-client
-  namespace: default
+  namespace: observability
 spec:
   maxReplicas: 3
   minReplicas: 1
   scaleTargetRef:
-    apiVersion: extensions/v1beta1
-    kind: Deployment
+    apiVersion: apps/v1
+    kind: StatefulSet
     name: elasticsearch-client
-  targetCPUUtilizationPercentage: 40
+  targetCPUUtilizationPercentage: 80

@@ -1,11 +1,13 @@
 ---
 clusterName: "elasticsearch"
-nodeGroup: "data"
+nodeGroup: "client"
 roles:
   master: "false"
-  ingest: "true"
-  data: "true"
-replicas: 2
+  ingest: "false"
+  data: "false"
+replicas: 1
+service:
+  type: "LoadBalancer"
 
 # Permit co-located instances for solitary minikube virtual machines.
 antiAffinity: "soft"
@@ -22,11 +24,13 @@ resources:
     cpu: "500m"
     memory: "256M"
 
-# Request smaller persistent volumes.
-volumeClaimTemplate:
-  accessModes: [ "ReadWriteOnce" ]
-  storageClassName: "standard"
-  resources:
-    requests:
-      storage: 5000M
+image: elasticsearch
+imageTag: 7.8.0
+
+persistence:
+  enabled: false
+  labels:
+    # Add default labels for the volumeClaimTemplate fo the StatefulSet
+    enabled: false
+  annotations: {}
 
